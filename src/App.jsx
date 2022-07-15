@@ -16,11 +16,3 @@ export default function App() {
         </Container>
     );
 }
-
-// *** удалить **********************************
-// import ContactForm from './components/ContactForm/ContactForm';
-// import ContactList from './components/ContactList/ConyactList';
-// import Filter from './components/ContactsFilter/Filter';
-// import { useState } from "react";
-// import { nanoid } from 'nanoid';
-// ********************** **********************************
