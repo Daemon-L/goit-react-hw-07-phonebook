@@ -3,7 +3,7 @@ import { FormContainer, Text, Input, Button } from './Form.styled'
 
 const ContactForm = ({ contacts, onAdd}) => {
     const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+    const [phone, setPhone] = useState('');
 
     const onAddNewContact = evt => {
         evt.preventDefault();
@@ -14,14 +14,14 @@ const ContactForm = ({ contacts, onAdd}) => {
             alert(`${name} is already in contacts`);
             return;
         } else {
-            onAdd(name, number);
+            onAdd(name, phone);
         }
         reset();
     };
 
     const reset = () => {
         setName("");
-        setNumber("");
+        setPhone("");
     };
     
     return (
@@ -42,9 +42,9 @@ const ContactForm = ({ contacts, onAdd}) => {
                 <Text>Number</Text>
                 <Input
                     type="tel"
-                    name="number"
-                    value={number}
-                    onChange={evt => setNumber(evt.target.value)}
+                    name="phone"
+                    value={phone}
+                    onChange={evt => setPhone(evt.target.value)}
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
