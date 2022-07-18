@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from './Filter.styled'
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { filterContacts } from '../../redux/contacts/actions';
@@ -22,4 +21,3 @@ const Filter = () => {
     );
 };
 export default Filter;
-

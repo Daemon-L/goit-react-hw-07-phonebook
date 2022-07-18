@@ -5,3 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 `;
+
+export const Error = styled.h2`
+    color: red;
+`;

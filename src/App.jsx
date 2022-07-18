@@ -1,14 +1,14 @@
 import React from "react";
-import { Container } from './App.styled';
+import { Container, Error } from './App.styled';
 import ContactForm from './components/ContactForm/Form';
 import ContactsList from './components/ContactList/ContactsList';
 import Filter from './components/ContactsFilter/Filter';
-// import Loader from './components/Loader/Loader';
+import Loader from './components/Loader/Loader';
 
 import { useFetchContactsQuery, useAddContactMutation, useRemoveContactMutation } from "./redux/contacts/contactsApi";
 
 export const App = () => {
-    const { data, isFetching, isError } = useFetchContactsQuery();
+    const { data, isError, error, isFetching} = useFetchContactsQuery();
     const showContactsData = data && !isError;
     const [removeContact] = useRemoveContactMutation();
     const [addContact, { isSuccess: isAdded }] = useAddContactMutation();
@@ -19,9 +19,11 @@ export const App = () => {
             <ContactForm contacts={data} onAdd={addContact} isAdded={isAdded} />
             <h2>Contacts</h2>
             <Filter />
-            
+
+            {isFetching && <Loader />}
+            {isError && <Error>{error.status}</Error>}
             {showContactsData && (
-                <ContactsList contacts={data} onDelete={removeContact} isFetching={isFetching} />
+                <ContactsList contacts={data} onDelete={removeContact}/>
             )}
         </Container>
     );

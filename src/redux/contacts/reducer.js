@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { filterContacts } from "./actions";
 
 const initialState = {
-    input: '',
+    input: ''
 };
 
 const filterReducer = createReducer(
@@ -13,7 +13,6 @@ const filterReducer = createReducer(
 });
 
 export default filterReducer;
-
 
 
 // const initialState = {

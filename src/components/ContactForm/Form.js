@@ -12,12 +12,11 @@ const ContactForm = ({ contacts, onAdd}) => {
         )
         ) { 
             alert(`${name} is already in contacts`);
-            return;
         } else {
             // console.log(name, phone);
+            reset();
             onAdd({name, phone});
         }
-        reset();
     };
 
     const reset = () => {
