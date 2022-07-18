@@ -14,7 +14,8 @@ const ContactForm = ({ contacts, onAdd}) => {
             alert(`${name} is already in contacts`);
             return;
         } else {
-            onAdd(name, phone);
+            // console.log(name, phone);
+            onAdd({name, phone});
         }
         reset();
     };
