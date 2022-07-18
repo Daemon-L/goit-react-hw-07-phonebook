@@ -1,16 +1,9 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import { FormContainer, Text, Input, Button } from './Form.styled'
 
-import { addContacts } from '../../redux/contacts/actions';
-import { getContactsList } from '../../redux/contacts/selectors';
-import { v4 } from 'uuid';
-
-const ContactFormNew = () => {
+const ContactForm = ({ contacts, onAdd}) => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const dispatch = useDispatch();
-    const contacts = useSelector(getContactsList);
 
     const onAddNewContact = evt => {
         evt.preventDefault();
@@ -21,11 +14,8 @@ const ContactFormNew = () => {
             alert(`${name} is already in contacts`);
             return;
         } else {
-        dispatch(
-            addContacts({
-                id: v4(), name, number,
-            })
-        );}
+            onAdd(name, number);
+        }
         reset();
     };
 
@@ -64,4 +54,4 @@ const ContactFormNew = () => {
         </FormContainer>
     )
 };
-export default ContactFormNew;
+export default ContactForm;

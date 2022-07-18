@@ -1,20 +1,24 @@
 import React from 'react';
 import { Text } from './Filter.styled'
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { filterContacts } from '../../redux/contacts/actions';
 
-const FilterNew = () => {
+const Filter = () => {
     const dispatch = useDispatch();
+
     const [filter, setFilter] = useState('');
+
     dispatch(filterContacts(filter));
 
     return (
-        <div>
+        <div >
             <Text>Find contacts by name</Text>
             <input type="text" value={filter} onChange={evt => setFilter(evt.target.value)}
             />
         </div>
     );
 };
-export default FilterNew;
+export default Filter;
+

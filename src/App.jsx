@@ -1,18 +1,28 @@
 import React from "react";
-
 import { Container } from './App.styled';
-import ContactFormNew from './components/ContactForm/FormNew';
-import ContactsListNew from './components/ContactList/ContactsListNew';
-import FilterNew from './components/ContactsFilter/FilterNew';
+import ContactForm from './components/ContactForm/Form';
+import ContactsList from './components/ContactList/ContactsList';
+import Filter from './components/ContactsFilter/Filter';
+// import Loader from './components/Loader/Loader';
 
-export default function App() {
+import { useFetchContactsQuery, useAddContactMutation, useRemoveContactMutation } from "./redux/contacts/contactsApi";
+
+export const App = () => {
+    const { data, isFetching, isError } = useFetchContactsQuery();
+    const showContactsData = data && !isError;
+    const [removeContact] = useRemoveContactMutation();
+    const [addContact, { isSuccess: isAdded }] = useAddContactMutation();
+    
     return (
         <Container>
             <h1>Phonebook</h1>
-               <ContactFormNew />
+            <ContactForm contacts={data} onAdd={addContact} isAdded={isAdded} />
             <h2>Contacts</h2>
-                <FilterNew/>
-                <ContactsListNew/>
+            <Filter />
+            
+            {showContactsData && (
+                <ContactsList contacts={data} onDelete={removeContact} isFetching={isFetching} />
+            )}
         </Container>
     );
-}
+};
