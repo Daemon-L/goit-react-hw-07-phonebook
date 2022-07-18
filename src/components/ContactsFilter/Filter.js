@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text } from './Filter.styled'
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { filterContacts } from '../../redux/contacts/actions';
 
 const Filter = () => {
     const dispatch = useDispatch();
-
     const [filter, setFilter] = useState('');
 
-    dispatch(filterContacts(filter));
+    useEffect(() => {
+        dispatch(filterContacts(filter));
+    },[dispatch, filter] );
 
     return (
         <div >
