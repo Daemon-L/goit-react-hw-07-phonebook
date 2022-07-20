@@ -1,21 +1,25 @@
 import { useState } from "react";
 import { FormContainer, Text, Input, Button } from './Form.styled'
+import { useAddContactMutation, useFetchContactsQuery } from "redux/contacts/contactsApi";
 
-const ContactForm = ({ contacts, onAdd}) => {
+
+const ContactForm = () => {
+    const { data } = useFetchContactsQuery();
+    const [addContact, { isSuccess: isAdded }] = useAddContactMutation();
+
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
 
     const onAddNewContact = evt => {
         evt.preventDefault();
-        if (contacts.find(
+        if (data.find(
             contact => contact.name.toLowerCase() === name.toLowerCase()
         )
         ) { 
             alert(`${name} is already in contacts`);
         } else {
-            // console.log(name, phone);
             reset();
-            onAdd({name, phone});
+            addContact({name, phone});
         }
     };
 

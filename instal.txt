@@ -1,0 +1,18 @@
+1. npm install --save styled-components
+
+2. npm install react-redux
+
+3. npm install @reduxjs/toolkit
+   npm install reselect (входит в reduxjs/toolkit)
+
+4. npm install --save redux-persist
+
+5. npm install react-loader-spinner --save
+
+
+   
+
+
+
+
+
