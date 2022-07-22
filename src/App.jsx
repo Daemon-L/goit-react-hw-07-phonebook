@@ -23,23 +23,3 @@ export const App = () => {
         </Container>
     );
 };
-
-// export const App = () => {
-//     const { data, isError, error, isFetching} = useFetchContactsQuery();
-//     const showContactsData = data && !isError;
-//     const [removeContact] = useRemoveContactMutation();
-//     const [addContact, { isSuccess: isAdded }] = useAddContactMutation();
-//     return (
-//         <Container>
-//             <h1>Phonebook</h1>
-//             <ContactForm contacts={data} onAdd={addContact} isAdded={isAdded} />
-//             <h2>Contacts</h2>
-//             <Filter />
-//             {isFetching && <Loader />}
-//             {isError && <Error>{error.status}</Error>}
-//             {showContactsData && (
-//                 <ContactsList contacts={data} onDelete={removeContact}/>
-//             )}
-//         </Container>
-//     );
-// };
